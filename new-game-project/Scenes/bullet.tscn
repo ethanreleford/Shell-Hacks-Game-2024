@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://boq12wkwwyvge"]
+
+[ext_resource type="Script" path="res://Scenes/bullet.gd" id="1_6ntr3"]
+[ext_resource type="Texture2D" uid="uid://bta3dabwus4en" path="res://Assets/Red Effect Bullet Impact Explosion 32x32.png" id="1_b6qeb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xefq1"]
+atlas = ExtResource("1_b6qeb")
+region = Rect2(352, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywbd8"]
+atlas = ExtResource("1_b6qeb")
+region = Rect2(384, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l0o2"]
+atlas = ExtResource("1_b6qeb")
+region = Rect2(416, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sq02"]
+atlas = ExtResource("1_b6qeb")
+region = Rect2(448, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ksy15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xefq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywbd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l0o2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sq02")
+}],
+"loop": true,
+"name": &"bullet",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krxro"]
+radius = 2.23607
+
+[node name="Bullet" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_6ntr3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_ksy15")
+animation = &"bullet"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_krxro")

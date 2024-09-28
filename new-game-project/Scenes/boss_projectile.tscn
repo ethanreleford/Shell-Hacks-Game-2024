@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvtryek4r3l7q"]
+
+[ext_resource type="Script" path="res://Scripts/boss_projectile.gd" id="1_ttn25"]
+[ext_resource type="Texture2D" uid="uid://r75ramj3dq0j" path="res://Assets/Mecha-stone Golem 0.1/weapon PNG/arm_projectile_glowing.png" id="2_okllg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5kgi"]
+atlas = ExtResource("2_okllg")
+region = Rect2(50, 25, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjmx3"]
+atlas = ExtResource("2_okllg")
+region = Rect2(150, 25, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynud0"]
+atlas = ExtResource("2_okllg")
+region = Rect2(250, 25, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1753"]
+atlas = ExtResource("2_okllg")
+region = Rect2(50, 125, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vo1k"]
+atlas = ExtResource("2_okllg")
+region = Rect2(150, 125, 50, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n0kp"]
+atlas = ExtResource("2_okllg")
+region = Rect2(250, 125, 50, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6l2p7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5kgi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjmx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynud0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1753")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vo1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n0kp")
+}],
+"loop": true,
+"name": &"Effects",
+"speed": 5.0
+}]
+
+[node name="BossProjectile" type="RigidBody2D"]
+z_index = 1
+script = ExtResource("1_ttn25")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6l2p7")
+animation = &"Effects"
+frame = 2
+frame_progress = 0.70606
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(2.5, 0)
+scale = Vector2(1.75, 1)
+polygon = PackedVector2Array(-9.42857, 0, -0.857143, -4, 4.85714, -2, 8.28571, -2, 8.85714, 0, 8.28571, 2, 3.71429, 3, 1.42857, 4, -0.857143, 4)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4hpdaj3l33q8"]
+
+[ext_resource type="Script" path="res://Scripts/bullet_spawn_point.gd" id="1_85fy4"]
+
+[node name="BulletSpawnPoint" type="Marker2D"]
+script = ExtResource("1_85fy4")
