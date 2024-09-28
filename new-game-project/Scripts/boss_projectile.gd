@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-var speed = 500.0
+var speed = 250.0
 var direction : Vector2
 
 

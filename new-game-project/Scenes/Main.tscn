@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4qm4tjy74jb1"]
+[gd_scene load_steps=5 format=3 uid="uid://c4qm4tjy74jb1"]
 
 [ext_resource type="PackedScene" uid="uid://ce6b4lrxlp2mc" path="res://Scenes/Dungeon.tscn" id="1_8w6gf"]
 [ext_resource type="PackedScene" uid="uid://dwq2y8vo6l3r6" path="res://Scenes/Player.tscn" id="2_o8ffb"]
 [ext_resource type="PackedScene" uid="uid://dvqfm6wks4s4q" path="res://Scenes/boss.tscn" id="3_mq11s"]
+[ext_resource type="PackedScene" uid="uid://bv7cg8xydn18a" path="res://Scenes/UI.tscn" id="4_e2n87"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,3 +14,7 @@ position = Vector2(248, 11)
 
 [node name="Boss" parent="." instance=ExtResource("3_mq11s")]
 scale = Vector2(2.5, 2.5)
+
+[node name="Control" parent="." instance=ExtResource("4_e2n87")]
+
+[editable path="Control"]

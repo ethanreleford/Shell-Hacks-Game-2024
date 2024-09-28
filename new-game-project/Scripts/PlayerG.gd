@@ -2,7 +2,7 @@ extends Node
 
 # Define movement variables
 var speed: float = 80.0
-var health : int = 5
+var health : int = 100
 var globalDirection : Vector2 = Vector2.ZERO
 @onready var player = get_node("/root/Main/Player")
 @onready var playerAnimation = player.get_node("AnimatedSprite2D")
@@ -10,11 +10,19 @@ var globalDirection : Vector2 = Vector2.ZERO
 
 #different player states
 enum playerState { IDLE, WALK, RUN, SHOOT1, SHOOT2, PUNCH1, HURT, DEAD, RELOAD}
-var isShooting : bool  = false
+var isShooting1 : bool  = false
+var isShooting2 : bool  = false
 var isRunning : bool = false
 var isDead : bool = false
 var isReloading : bool = false
 var current_state = playerState.IDLE
+var runUpper = 100
+var runCurrent = 100
+var runLower = 0
+var canRun = true
+var ammoMax = 20
+var ammo = 20
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +30,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#print(isShooting2)
 	running()
+	reloading()
 	#print(playerAnimation)
 
 # Function to get movement input
@@ -60,19 +70,40 @@ func setState(new_state):
 			playerAnimation.play("reload")
 			
 func animations(vector : Vector2):
-	if vector.x > 0:
+# Get the global mouse position
+	var mouse_position = player.get_global_mouse_position()
+
+# Determine the player's x position
+	var player_position = player.global_position.x  # Use the player's global position directly
+
+# Flip the model based on mouse position
+	if mouse_position.x > player_position:
 		playerBulletSpawnPoint.position.x = 13.0
 		playerAnimation.flip_h = false
-	elif vector.x < 0:
+	else:
 		playerBulletSpawnPoint.position.x = -13.0
 		playerAnimation.flip_h = true
-	if isShooting:
+
+		
+	if isReloading:
+		setState(playerState.RELOAD)
+		player.velocity = Vector2(0,0)
+		return
+		
+	if isRunning:
+		setState(playerState.RUN)
+		return
+		
+	if isShooting1 and ammo >= 1:
 		#print(isShooting)
 		setState(playerState.SHOOT1)
 		player.velocity = Vector2(0,0)
 		return
-	if isRunning:
-		setState(playerState.RUN)
+		
+	if isShooting2:
+		#print(isShooting2)
+		setState(playerState.SHOOT2)
+		player.velocity = Vector2(0,0)
 		return
 		
 	if vector.x > 0:
@@ -87,10 +118,44 @@ func animations(vector : Vector2):
 		setState(playerState.IDLE )
 
 
+
+func rechargeRun():
+	if runCurrent < 100:
+		await get_tree().create_timer(0.03).timeout
+		runCurrent += 1
+
+
+func useRun():
+	runCurrent -= 1
+	await get_tree().create_timer(0.02).timeout
+	
 func running():
-	if Input.is_action_pressed("run"):
+	if Input.is_action_pressed("run") and runCurrent > 0 and canRun:
+		useRun()
 		isRunning = true
 		speed = 135.0
 	else:
+		canRun = false
+		rechargeRun()
 		isRunning = false
 		speed = 80.0
+		#print("hit")
+		await get_tree().create_timer(1).timeout
+		canRun = true
+
+func removeAmmo():
+	ammo = ammo - 1
+
+func reloading():
+	if Input.is_action_just_pressed("reload"):
+		isReloading = true
+		#print(speed)
+		await get_tree().create_timer(2.35).timeout
+		ammo = ammoMax
+		isShooting1 = false
+		isReloading = false
+		
+		
+func hurt():
+	setState(playerState.HURT)
+	health = health -25
