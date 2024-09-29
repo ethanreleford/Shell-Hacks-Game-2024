@@ -36,10 +36,11 @@ func chooseBullet():
 		spawnBullet(bullet_instance)
 
 func spawnBullet(bullet_instance):
-	if canShoot and hasAmmo:
+	if canShoot and hasAmmo and playerG.isRunning == false and playerG.isReloading == false:
+		$"../gunshot".play()
 		playerG.removeAmmo()
 		print(playerG.ammo)
-		if playerG.ammo <= 0:
+		if playerG.ammo < 0:
 			return 
 		canShoot = false
 		if type == 1:

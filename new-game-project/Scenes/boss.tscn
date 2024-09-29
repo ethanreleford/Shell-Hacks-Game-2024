@@ -1,8 +1,7 @@
-[gd_scene load_steps=99 format=3 uid="uid://dvqfm6wks4s4q"]
+[gd_scene load_steps=83 format=3 uid="uid://dvqfm6wks4s4q"]
 
 [ext_resource type="Script" path="res://Scenes/boss.gd" id="1_3h785"]
 [ext_resource type="Texture2D" uid="uid://fqklk2dffoer" path="res://Assets/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_v3k0r"]
-[ext_resource type="Texture2D" uid="uid://b5ix6ijqwjyp7" path="res://Assets/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_hsk53"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6n58"]
 atlas = ExtResource("1_v3k0r")
@@ -549,7 +548,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4v4ik")
 }, {
-"duration": 2.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6e3aa")
 }],
 "loop": true,
@@ -589,145 +588,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f0tsp"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 0, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_exm6t"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 100, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_006m3"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 200, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_od3my"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 300, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_va3wr"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 400, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1nfx"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 500, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3eyx"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 600, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_grue4"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 700, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_byryn"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 800, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_62ebb"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 900, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dn5ie"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 1000, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lu1vs"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 1100, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1f8pe"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 1200, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y8v6w"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 1300, 300, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nov5b"]
-atlas = ExtResource("2_hsk53")
-region = Rect2(0, 1400, 300, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6jqi6"]
-animations = [{
-"frames": [{
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_f0tsp")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_exm6t")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_006m3")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_od3my")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_va3wr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a1nfx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s3eyx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_grue4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_byryn")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_62ebb")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_dn5ie")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_lu1vs")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_1f8pe")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_y8v6w")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_nov5b")
-}],
-"loop": true,
-"name": &"laser shot",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ji2dd"]
-radius = 10.8167
+radius = 88.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hk5v0"]
 radius = 34.3657
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_her8p"]
+radius = 18.0278
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_3h785")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_bfhbn")
-animation = &"attack 1"
-frame = 4
-frame_progress = 0.660441
+animation = &"shoot"
 
 [node name="laserSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(2, -17)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="laserSpawnPoint"]
-texture_filter = 1
-position = Vector2(44, 6)
-scale = Vector2(0.451035, 0.302594)
-sprite_frames = SubResource("SpriteFrames_6jqi6")
-animation = &"laser shot"
-frame_progress = 0.409846
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 
@@ -740,8 +620,6 @@ polygon = PackedVector2Array(-3.2, -4.66667, -6.4, -2.44444, -6, 0.666667, -4.8,
 position = Vector2(29, -13)
 
 [node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_ji2dd")
@@ -751,5 +629,10 @@ shape = SubResource("CircleShape2D_ji2dd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="punchDetection"]
 shape = SubResource("CircleShape2D_hk5v0")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_her8p")
+
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
 [connection signal="area_entered" from="punchDetection" to="." method="_on_punch_detection_area_entered"]
+[connection signal="area_exited" from="punchDetection" to="." method="_on_punch_detection_area_exited"]

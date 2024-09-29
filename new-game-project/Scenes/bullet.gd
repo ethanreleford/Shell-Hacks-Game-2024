@@ -3,6 +3,10 @@ extends RigidBody2D
 
 @onready var bossG = get_node("/root/BossG")
 
+
+
+
+
 # Speed at which the bullet should move
 var speed : float = 700.0
 var direction : Vector2 = Vector2()
@@ -24,3 +28,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		bossG.takeDamage()
 		queue_free()
 		print(bossG.health)
+	if area.is_in_group("wall"):
+		queue_free()

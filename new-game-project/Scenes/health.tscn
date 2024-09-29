@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://csa4fcr1ve5hg"]
+
+[ext_resource type="Script" path="res://Scenes/health.gd" id="1_udqg1"]
+[ext_resource type="Texture2D" uid="uid://brrrrtdhqnq7y" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_nc5vg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0igk"]
+radius = 7.0
+
+[node name="health" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_udqg1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_r0igk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_nc5vg")
+region_enabled = true
+region_rect = Rect2(290.784, 339.433, 10.5818, 10.4214)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

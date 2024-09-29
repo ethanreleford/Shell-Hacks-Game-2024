@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dprd80m55yoh1"]
+
+[ext_resource type="Texture2D" uid="uid://bskwacepxaq1r" path="res://Assets/0x72_DungeonTilesetII_v1.7/atlas_walls_high-16x32.png" id="1_esrbe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fcim"]
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p8sh0"]
+height = 38.0
+
+[node name="pillar" type="RigidBody2D"]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_esrbe")
+region_enabled = true
+region_rect = Rect2(241.173, 82.528, 14.2805, 34.1303)
+
+[node name="Area2D" type="Area2D" parent="." groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_3fcim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_p8sh0")

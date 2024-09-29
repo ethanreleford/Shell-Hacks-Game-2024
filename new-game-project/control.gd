@@ -41,7 +41,7 @@ func update_player_stamina_display() -> void:
 # Function to update the boss's health display
 func update_boss_health_display() -> void:
 	var boss_health_value = bossG.health
-	bossHealthLabel.value = boss_health_value / 100
+	bossHealthLabel.value = boss_health_value / 50
 	
 # Function to update the ammo count display
 func update_ammo_count_display() -> void:

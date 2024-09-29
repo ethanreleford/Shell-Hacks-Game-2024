@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh6fq4wlmhgvk"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_lep52"]
+[ext_resource type="Texture2D" uid="uid://fqklk2dffoer" path="res://Assets/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="2_3tnxb"]
+[ext_resource type="Texture2D" uid="uid://bjq1l51n0m2hs" path="res://Assets/craftpix-net-507107-free-soldier-sprite-sheets-pixel-art/Soldier_1/Shot_1.png" id="3_d5u2p"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_lep52")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 266.0
+offset_right = 790.0
+offset_bottom = 486.0
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Start Game"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = "Exit Game"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(338.127, 376.595)
+scale = Vector2(6.25747, 6.86809)
+texture = ExtResource("2_3tnxb")
+region_enabled = true
+region_rect = Rect2(515.71, 215.184, 100, 100)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(942, 283)
+scale = Vector2(4.05405, 3.57692)
+texture = ExtResource("3_d5u2p")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(281, 51.75, 74.5, 78.5)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 17.0
+offset_right = 947.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 75
+text = "Is Like A Boss Fight"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
